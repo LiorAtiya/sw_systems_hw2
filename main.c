@@ -11,7 +11,7 @@ void main(){
     int exit = 0;
 
     while(exit != 1){
-        printf("\nO - Open new account \n");
+        printf("\nO - Open new account\n");
         printf("B - The balance in account\n");
         printf("D - Deposit from account\n");
         printf("W - Withdraw from account\n");
@@ -19,23 +19,18 @@ void main(){
         printf("I - Add interest to all open accounts\n");
         printf("P - Print all bank accounts\n");
         printf("E - Exit and close all the acounts\n");
-        printf("Transaction type?: ");
+        printf("\nTransaction type? ");
         scanf("\n%c", &operation);
 
         switch (operation)
         {
         case 'O':
-            if(count < 50){
-                printf("Enter a new account number: ");
-                //NEED TO CHECK VALID INPUT
-                scanf("%d", &account);
-                printf("Initial deposit?: ");
-                scanf("%lf", &sum);
-                createAccount(account, sum);
-                count++;
-            }else{
-                printf("The bank account quota is full");
-            }
+            printf("Enter a new account number: ");
+            //NEED TO CHECK VALID INPUT
+            scanf("%d", &account);
+            printf("Initial deposit? ");
+            scanf("%lf", &sum);
+            createAccount(account, sum);
             break;
         case 'B':
             printf("Enter a account number: ");
@@ -47,7 +42,7 @@ void main(){
             printf("Enter a account number: ");
             //NEED TO CHECK VALID INPUT
             scanf("%d", &account);
-            printf("Amount?: ");
+            printf("Amount? ");
             scanf("%lf", &sum);
             deposit(account, sum);
             break;
@@ -55,7 +50,7 @@ void main(){
             printf("Enter a account number: ");
             //NEED TO CHECK VALID INPUT
             scanf("%d", &account);
-            printf("Amount?: ");
+            printf("Amount? ");
             scanf("%lf", &sum);
             withdraw(account, sum);
             break;
@@ -67,7 +62,7 @@ void main(){
             count--;
             break;
         case 'I':
-            printf("Interest rate?: ");
+            printf("Interest rate? ");
             scanf("%lf", &sum);
             addInterest(sum);
             break;
@@ -79,7 +74,7 @@ void main(){
             exit = 1;
             break;
         default:
-            printf("Invaild input!");
+            printf("Invaild input!\n");
             break;
         }
     }
