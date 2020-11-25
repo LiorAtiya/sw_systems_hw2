@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include<math.h> 
+#include <math.h> 
 
 /**
  * 2D array of all accounts containing: open/closed account and account balance.
  */
-double allAccounts[2][50] = {0};
+static double allAccounts[2][50] = {0};
 
 /**
  * Counter of the number of accounts.
@@ -39,7 +39,7 @@ void createAccount(int account, double init){
                 allAccounts[0][account-900] = 1;
                 allAccounts[1][account-900] = floor(init * 100) / 100;
                 printf("A new account number %d has been created\n",account);
-                printf("The initial amount deposited is %.2lf \n",init);
+                printf("The initial amount deposited is %lf \n",init);
                 count++;
             }else{
                 printf("This account number already exists\n");

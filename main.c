@@ -2,7 +2,12 @@
 #include "myBank.h"
 #include <math.h>
 
-void main(){
+void cleanBuffer(){
+    int n;
+    while((n = getchar()) != EOF && n != '\n');
+}
+
+int main(){
     static int count = 0;
     printf("Welcome to the bank\n");
     int account;
@@ -20,12 +25,14 @@ void main(){
         printf("P - Print all bank accounts\n");
         printf("E - Exit and close all the acounts\n");
         printf("\nTransaction type? ");
-        scanf("\n%c", &operation);
+        
+        if(scanf("\n %c", &operation) ){
+        cleanBuffer();
 
         switch (operation)
         {
         case 'O':
-            printf("Enter a new account number: ");
+            printf("\nEnter a new account number: ");
             //NEED TO CHECK VALID INPUT
             scanf("%d", &account);
             printf("Initial deposit? ");
@@ -78,5 +85,8 @@ void main(){
             break;
         }
     }
+    }
+    
+    return 0;
 }
 
