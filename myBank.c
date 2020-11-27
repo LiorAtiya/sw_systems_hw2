@@ -5,13 +5,14 @@
 /**
  * 2D array of all accounts containing: open/closed account and account balance.
  */
-static double allAccounts[2][50] = {0};
+static double allAccounts[2][50] = {{0},{0}};
 
 /**
  * Auxiliary function to check if the bank account is open or closed.
  */
 bool isOpen(int account){
-    if(allAccounts[0][account-900] == 1) return true;
+    // if(account <= 900 && account >= 951) return false;
+    if(allAccounts[0][account-901] == 1) return true;
     return false;
 }
 
@@ -21,8 +22,8 @@ bool isOpen(int account){
  */
 void createAccount(int account, double init){
     if(!isOpen(account)){
-        allAccounts[0][account-900] = 1;
-        allAccounts[1][account-900] = floor(init * 100) / 100;
+        allAccounts[0][account-901] = 1;
+        allAccounts[1][account-901] = floor(init * 100) / 100;
     }else{
         printf("This account number already exists\n");
     }
@@ -33,7 +34,7 @@ void createAccount(int account, double init){
  */
 void balance(int account){
     if(isOpen(account)){
-        double balance = allAccounts[1][account-900];
+        double balance = allAccounts[1][account-901];
         printf("The balance in account number %d is %.2lf\n",account,balance);
     }else{
         printf("This account is closed\n");
@@ -45,8 +46,8 @@ void balance(int account){
  */
 void deposit(int account, double money){
     if(isOpen(account)){
-        allAccounts[1][account-900] += floor(money * 100) / 100;
-        printf("The balance of account number %d is %.2lf\n",account, allAccounts[1][account-900]);
+        allAccounts[1][account-901] += floor(money * 100) / 100;
+        printf("The balance of account number %d is %.2lf\n",account, allAccounts[1][account-901]);
     }else{
         printf("This account is closed\n");
     }
@@ -57,9 +58,9 @@ void deposit(int account, double money){
  */
 void withdraw(int account, double money){
     if(isOpen(account)){
-        if(money <= allAccounts[1][account-900]){
-            allAccounts[1][account-900] -= floor(money * 100) / 100;
-            printf("The new balance is: %.2lf\n", allAccounts[1][account-900]);
+        if(money <= allAccounts[1][account-901]){
+            allAccounts[1][account-901] -= floor(money * 100) / 100;
+            printf("The new balance is: %.2lf\n", allAccounts[1][account-901]);
         }else{
             printf("Cannot withdraw more than the balance\n");
         }
@@ -73,7 +74,7 @@ void withdraw(int account, double money){
  */
 void closeAccount(int account){
     if(isOpen(account)){
-        allAccounts[0][account-900] = 0;
+        allAccounts[0][account-901] = 0;
         printf("Account number %d is closed\n", account);
     }else{
         printf("The bank account is already closed\n");
@@ -99,7 +100,7 @@ void printAccounts(){
     int i;
     for(i=0 ; i <= 50 ; i++){
         if(allAccounts[0][i] == 1){
-           printf("The balance of account number %d is %.2lf\n",i+900, allAccounts[1][i]);
+           printf("The balance of account number %d is %.2lf\n",i+901, allAccounts[1][i]);
         }
     }
 }
@@ -111,7 +112,7 @@ void closeAllAcounts(){
     int i;
     for(i=0 ; i < 50 ; i++){
         if(allAccounts[0][i] == 1){
-           closeAccount(i+900);
+           closeAccount(i+901);
         }
     }
     printf("All accounts have been closed and exit the bank\n");

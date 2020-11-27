@@ -1,6 +1,8 @@
 #ifndef MYBANK_H
 #define MYBANK_H
+#include <stdbool.h>
 
+bool isOpen(int account);
 void createAccount(int account, double init);
 void balance(int account);
 void deposit(int account, double money);
