@@ -26,17 +26,21 @@ int main(){
         case 'O':
             if(countAccount <= 950){
                 printf("Please enter amount for deposit: ");
-                if(scanf(" %lf", &sum) != 1){
+                if(scanf(" %lf", &sum) == 1){
+                    if(sum >= 0){
+                        int i = 0;
+                        while(i+901 <= 950 && isOpen(i+901)){
+                            i++;
+                        }
+                        printf("New account number is: %d\n", i+901);
+                        createAccount(i+901, sum);
+                        countAccount++;
+                    }else{
+                        printf("Invalid Amount\n");
+                    }
+                }else{
                     printf("Failed to read the amount\n");
-                    break;
                 }
-                int i = 0;
-                while(i+901 <= 950 && isOpen(i+901)){
-                    i++;
-                }
-                printf("New account number is: %d\n", i+901);
-                createAccount(i+901, sum);
-                countAccount++;
             }else{
                 printf("The bank is full\n");
             }
@@ -51,21 +55,37 @@ int main(){
             break;
         case 'D':
             printf("Please enter account number: ");
-            if(scanf(" %d", &accountNumber) != 1 || accountNumber < 901 || accountNumber > 950){
+            if(scanf(" %d", &accountNumber) != 1){
                 printf("Failed to read the account number\n");
                 break;
             }
-            printf("Amount? ");
+            if(accountNumber < 901 || accountNumber > 950){
+                printf("Invalid account number\n");
+                    break;
+            }
+            if(!isOpen(accountNumber)){
+                printf("This account is closed\n");
+                break;
+            }
+            printf("Please enter the amount to deposit: ");
             if(scanf(" %lf", &sum) != 1){
                 printf("Failed to read the amount\n");
+                break;
+            }
+            if(sum < 0){
+                printf("Cannot deposit a negative amount\n");
                 break;
             }
             deposit(accountNumber, sum);
             break;
         case 'W':
             printf("Please enter account number: ");
-            if(scanf(" %d", &accountNumber) != 1 || accountNumber < 901 || accountNumber > 950){
+            if(scanf(" %d", &accountNumber) != 1){
                 printf("Failed to read the account number\n");
+                break;
+            }
+            if(!isOpen(accountNumber)){
+                printf("This account is closed\n");
                 break;
             }
             printf("Please enter the amount to withdraw: ");
@@ -88,6 +108,10 @@ int main(){
             printf("Please enter interest rate: ");
             if(scanf(" %lf", &sum) != 1){
                 printf("Failed to read the interest rate\n");
+                break;
+            }
+            if(sum < 0){
+                printf("Invalid interest rate\n");
                 break;
             }
             addInterest(sum);
