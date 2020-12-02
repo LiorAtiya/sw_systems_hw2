@@ -35,7 +35,7 @@ void createAccount(int account, double init){
 void balance(int account){
     if(isOpen(account)){
         double balance = allAccounts[1][account-901];
-        printf("The new balance is: %.2lf\n",balance);
+        printf("The balance of account number %d is: %.2lf\n",account, balance);
     }else{
         printf("This account is closed\n");
     }
@@ -47,7 +47,7 @@ void balance(int account){
 void deposit(int account, double money){
     if(isOpen(account)){
         allAccounts[1][account-901] += floor(money * 100) / 100;
-        printf("The balance of account number %d is %.2lf\n",account, allAccounts[1][account-901]);
+        printf("The new balance is: %.2lf\n",allAccounts[1][account-901]);
     }else{
         printf("This account is closed\n");
     }
@@ -82,7 +82,7 @@ void closeAccount(int account){
 }
 
 /**
- * Addition / reduction of interest (calculated according to percentages).
+ * Addition of interest (calculated according to percentages).
  */
 void addInterest(double interest_rate){
     for(int i=0 ; i < 50 ; i++){
@@ -90,7 +90,6 @@ void addInterest(double interest_rate){
            allAccounts[1][i] += allAccounts[1][i]*((double)interest_rate/100);
         }
     }
-    printf("An interest rate of %.2lf%c was added for all open accounts\n", interest_rate,'%');
 }
 
 /**

@@ -6,6 +6,7 @@ int main(){
     int accountNumber;
     int countAccount = 901;
     double sum;
+    int precent;
     char operation;
     int exit = 0;
 
@@ -106,15 +107,14 @@ int main(){
             break;
         case 'I':
             printf("Please enter interest rate: ");
-            if(scanf(" %lf", &sum) != 1){
+            if(scanf(" %d", &precent) != 1){
                 printf("Failed to read the interest rate\n");
-                break;
-            }
-            if(sum < 0){
+            }else if(precent < 0){
                 printf("Invalid interest rate\n");
-                break;
+            }else{
+                addInterest(precent);
+                printf("\n");
             }
-            addInterest(sum);
             break;
         case 'P':
             printAccounts();
