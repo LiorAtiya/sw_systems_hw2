@@ -11,7 +11,7 @@ int main(){
     int exit = 0;
 
     while(exit != 1){
-        printf("Please choose a transaction type: \n");
+        printf("\nPlease choose a transaction type: \n");
         printf("O-Open Account\n");
         printf("B-Balance Inquiry\n");
         printf("D-Deposit\n");
@@ -113,7 +113,6 @@ int main(){
                 printf("Invalid interest rate\n");
             }else{
                 addInterest(precent);
-                printf("\n");
             }
             break;
         case 'P':
@@ -127,7 +126,7 @@ int main(){
             printf("Invalid transaction type\n");
             break;
         }
-        printf("\n");
+        // printf("\n");
     } 
     return 0;
 }

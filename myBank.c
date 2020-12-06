@@ -99,7 +99,7 @@ void printAccounts(){
     int i;
     for(i=0 ; i <= 50 ; i++){
         if(allAccounts[0][i] == 1){
-           printf("The balance of account number %d is %.2lf\n",i+901, allAccounts[1][i]);
+           printf("The balance of account number %d is: %.2lf\n",i+901, allAccounts[1][i]);
         }
     }
 }

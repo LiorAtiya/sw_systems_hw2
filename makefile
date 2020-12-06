@@ -26,7 +26,7 @@ main.o: main.c myBank.h
 myBank.o: myBank.c myBank.h
 			$(CC) $(FLAGS) -c myBank.c
 
-.PHONY: clean all mymaths mymathd
+.PHONY: clean all mybanks mybankd
 
 clean:
 	rm -f *.o *.a *.so mains maind
